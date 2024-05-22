@@ -11,11 +11,15 @@
  * License:           GPL v2 or later
  */
 
+ defined('ABSPATH') or die();
+ if(!function_exists('add_action')){
+     die;
+ }
 
 add_filter( 'the_title', 'shorten_woo_product_title', 10, 2 );
 function shorten_woo_product_title( $title, $id ) {
-    if ( ! is_singular( array( 'product' ) ) && get_post_type( $id ) === 'product' && strlen( $title ) > 30 ) {
-        return substr( $title, 0, 30) . '…'; // change last number to the number of characters you want
+    if ( ! is_singular( array( 'product' ) ) && get_post_type( $id ) === 'product' && strlen( $title ) > 65 ) {
+        return substr( $title, 0, 65) . '…'; // change last number to the number of characters you want
     } else {
         return $title;
     }
